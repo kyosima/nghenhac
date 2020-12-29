@@ -50,6 +50,10 @@
                                         <div class="alert alert-danger" role="alert">
                                             {{Session::get('error')}}
                                         </div>
+                                    @elseif(Session::has('kichhoat'))
+                                        <div class="alert alert-danger" role="alert">
+                                            {{Session::get('kichhoat')}}
+                                        </div>
                                     @endif
                                     <form class="user" method="POST">
                                         @csrf

@@ -27,7 +27,7 @@ Route::group(['middleware' => 'guest'], function(){
 
 
 //ADMIN
-Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
+Route::group(['prefix' => '/', 'middleware' => 'admin'], function(){
     Route::get('/dashboard', [AdminController::class, 'getDashboard']);
     Route::get('/danh-sach', [AdminController::class, 'getDanhsach']);
     Route::get('/ho-so', [AdminController::class, 'getHoso']);

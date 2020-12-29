@@ -22,13 +22,45 @@ class HomeController extends Controller
     public function postLogin(Request $request){
         $username = $request->input('username');
         $password = $request->input('password');
-        if (Auth::guard('user')->attempt(['username' => $username, 'password' => $password])) {
-            $user = Auth::guard('user')->user();
-            // if($user->role == 0){
-            //     Auth::guard('admin')->attempt(['username' => $username, 'password' => $password]);
-            //     return redirect('admin/dashboard');
-            // }
-            return redirect('/');
+        if (Auth::attempt(['username' => $username, 'password' => $password])) {
+            $user = Auth::user();
+            if($user->role == 0){
+                if($user->status == 1){
+                    return redirect('admin/dashboard');
+                }
+                else{
+                    Auth::logout();
+                    return back()->with('kichhoat', 'Tài khoản chưa được kích hoạt');
+                }
+            }
+            elseif($user->role == 1){
+                if($user->status == 1){
+                    return "Trang user role 1";
+                }
+                else{
+                    Auth::logout();
+                    return back()->with('kichhoat', 'Tài khoản chưa được kích hoạt');
+                }
+            }
+            elseif($user->role == 2){
+                if($user->status == 1){
+                    return "Trang user role 2";
+                }
+                else{
+                    Auth::logout();
+                    return back()->with('kichhoat', 'Tài khoản chưa được kích hoạt');
+                }
+            }
+            elseif($user->role == 3){
+                if($user->status == 1){
+                    return "Trang user role 3";
+                }
+                else{
+                    Auth::logout();
+                    return back()->with('kichhoat', 'Tài khoản chưa được kích hoạt');
+                }
+            }
+
         }else{
             return back()->with('error', 'Sai tên đăng nhập hoặc mật khẩu');
         }
@@ -57,8 +89,7 @@ class HomeController extends Controller
     }
 
     public function logout(){
-        Auth::guard('admin')->logout();
-        Auth::guard('user')->logout();
+        Auth::logout();
         return redirect('/');
     }
 }
