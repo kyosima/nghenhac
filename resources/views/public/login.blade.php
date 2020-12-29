@@ -42,15 +42,15 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Đăng nhập</h1>
                                     </div>
-                                    @php
-                                        $mess = Session::get('dangnhaploi');
-                                        if($mess){
-                                            echo "<div class='alert alert-danger' role='alert'>
-                                                $mess
-                                      </div>";
-                                        }
-                                    @endphp
-
+                                    @if(Session::has('success'))
+                                        <div class="alert alert-success" role="alert">
+                                            {{Session::get('success')}}
+                                        </div>
+                                    @elseif(Session::has('error'))
+                                        <div class="alert alert-danger" role="alert">
+                                            {{Session::get('error')}}
+                                        </div>
+                                    @endif
                                     <form class="user" method="POST">
                                         @csrf
                                         <div class="form-group">
@@ -73,10 +73,7 @@
                                             Đăng nhập
                                         </button>
                                         <hr>
-
                                     </form>
-
-
                                     <div class="text-center">
                                         <a class="small" href="{{URL::to('register')}}">Tạo tài khoản mới!</a>
                                     </div>

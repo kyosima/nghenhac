@@ -49,52 +49,59 @@
                     <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
                     <div class="col-lg-7">
                         <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Tạo tài khoản mới!</h1>
-                            </div>
-                            <form class="user">
+                            <form id="form-register" action="" method="POST" enctype="multipart/form-data" oninput='repassword.setCustomValidity(password.value != repassword.value ? "Mật khẩu không khớp!" : "")'>
+                                {{ csrf_field() }}
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Tạo tài khoản mới!</h1>
+                                </div>
+                                @if(Session::has('success'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{Session::get('success')}}
+                                    </div>
+                                @elseif(Session::has('error'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{Session::get('error')}}
+                                    </div>
+                                @endif
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Tài khoản">
+                                    <input type="text" class="form-control form-control-user" name="username"
+                                        placeholder="Tài khoản" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Họ và tên">
+                                    <input type="text" class="form-control form-control-user" name="fullname"
+                                        placeholder="Họ và tên" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email">
+                                    <input type="email" class="form-control form-control-user" name="email"
+                                        placeholder="Email" required>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Mật khẩu">
+                                            name="password" placeholder="Mật khẩu" required>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Nhập lại mật khẩu">
+                                            name="repassword" placeholder="Nhập lại mật khẩu" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="" for="">Chọn gói sản phẩm</label>
-                                    <select class="goicuoc custom-select">
+                                    <select class="goicuoc custom-select" name="role">
                                         <option value="1" selected>Gói 1 : 200k</option>
                                         <option value="2">Gói 2 : 400k</option>
                                         <option value="3">Gói 3 : 600k</option>
-                                      </select>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-file">
-                                        <input type="file" class="goicuoc custom-file-input" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Hình ảnh xác nhận hóa đơn</label>
-                                      </div>
-                                  </div>
+                                        <input type="file" class="goicuoc custom-file-input" name="bill" id="customFile" required>
+                                        <label class="custom-file-label" for="customFile" >Hình ảnh xác nhận hóa đơn</label>
+                                    </div>
+                                </div>
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Đăng ký mới
                                 </button>
-
-
-
                             </form>
                             <hr>
 
