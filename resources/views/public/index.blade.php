@@ -30,8 +30,12 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Dịch vụ</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Giới thiệu</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Liên hệ</a></li>
-                        <li class="nav-item"><a type="button" style="text-transform: none;" class="btn btn-info" href="{{URL::to('/register')}}">Đăng ký</a></li>
-                        <li class="nav-item"><a type="button" style="text-transform: none;" class="btn btn-success" href="{{URL::to('/login')}}">Đăng nhập</a></li>
+                        @if(Auth::guard('user')->check())
+                            <<li class="nav-item"><a type="button" style="text-transform: none;" class="btn btn-info" href="{{URL::to('/dashboard')}}">Trang quản lý</a></li>>
+                        @else
+                            <li class="nav-item"><a type="button" style="text-transform: none;" class="btn btn-info" href="{{URL::to('/register')}}">Đăng ký</a></li>
+                            <li class="nav-item"><a type="button" style="text-transform: none;" class="btn btn-success" href="{{URL::to('/login')}}">Đăng nhập</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>

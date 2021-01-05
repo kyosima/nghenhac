@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
 <?php
     $user = Auth::guard('user')->user();    
 ?>
-<head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin</title>
+    <title>Nghe nhạc online</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('public/admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -44,7 +44,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Admin</div>
+                <div class="sidebar-brand-text mx-3">Nghe nhạc online</div>
             </a>
 
             <!-- Divider -->
@@ -52,9 +52,9 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{URL::to('/admin/dashboard')}}">
+                <a class="nav-link" href="{{URL::to('/dashboard')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Bảng điều khiển</span></a>
+                    <span>Trang quản lý</span></a>
             </li>
 
             <!-- Divider -->
@@ -62,65 +62,53 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Quản lý
+                Thanh điều khiển
             </div>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#adminlist"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Quản lý Admin</span>
-                </a>
-                <div id="adminlist" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{URL::to('admin/list-admin')}}">Danh sách admin</a>
-                        <a class="collapse-item" href="{{URL::to('admin/add-user')}}">Thêm Admin</a>
-                    </div>
-                </div>
-            </li>
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Quản lý người dùng</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#manageraccount"
+                aria-expanded="true" aria-controls="manageraccount">
+                    <i class="fas fa-user"></i>
+                    <span>Tài khoản</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{URL::to('admin/list-new-user')}}">Duyệt người dùng mới</a>
-                        <a class="collapse-item" href="{{URL::to('admin/list-user')}}">Danh sách người dùng</a>
-                        <a class="collapse-item" href="{{URL::to('admin/add-user')}}">Thêm người dùng</a>
-                    </div>
+                <div id="manageraccount" class="collapse" aria-labelledby="headingUtilities"
+                data-parent="#manageraccount">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{URL::to('/account')}}">Thông tin tài khoản</a>
+                    <a class="collapse-item" href="{{URL::to('/bank')}}">Tài khoản ngân hàng</a>
+                    <a class="collapse-item" href="{{URL::to('/change-password')}}">Đổi mật khẩu</a>
                 </div>
+            </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1"
+                <a class="nav-link collapsed" href="{{URL::to('/list-video')}}" 
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Quản lý Video</span>
+                    <i class="fa fa-youtube-play"></i>
+                    <span>Xem video</span>
                 </a>
-                <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{URL::to('admin/list-video')}}">Danh sách video</a>
-                        <a class="collapse-item" href="{{URL::to('admin/add-video')}}">Thêm video</a>
-                    </div>
-                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{URL::to('/upgrate')}}" 
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-tools"></i>
+                    <span>Nâng cấp</span>
+                </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-landmark"></i>
                     <span>Quản lý Nạp/Rút tiền</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{URL::to('/admin/deposit-manager')}}">Duyệt lệnh nạp</a>
-                        <a class="collapse-item" href="{{URL::to('/admin/withdrawn-manager')}}">Duyệt lệnh rút</a>
-                        <a class="collapse-item" href="{{URL::to('/admin/deposit-history')}}">Lịch sử lệnh nạp</a>
-                        <a class="collapse-item" href="{{URL::to('/admin/withdrawn-history')}}">Lịch sử lệnh rút</a>
+                        <a class="collapse-item" href="{{URL::to('/withdrawn')}}">Đặt lệnh rút</a>
+                        <a class="collapse-item" href="{{URL::to('/withdrawn-history')}}">Lịch sử rút</a>
+                        <a class="collapse-item" href="{{URL::to('/deposit-history')}}">Lịch sử nạp</a>
                     </div>
                 </div>
             </li>
@@ -164,11 +152,24 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
+                        @if(Auth::guard('admin')->check())
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle text-danger" href="{{URL::to('/admin/dashboard')}}" id="userDropdown" role="button">
+                                Quản trị Admin
+                            </a>
+                        </li>
+                        @endif
+                        <!-- Nav Item - Alerts -->
                         
 
 
@@ -178,7 +179,7 @@
                         margin: auto 1rem;
                         padding-right: 25px;">
                             <i class="fa fa-money fa-fw"></i>
-                                    <strong>Số dư :</strong> <span style="color: red;">{{$user->wallet}} <sup>vnđ</sup></span>
+                                    <strong>Số dư :</strong> <span style="color: red;">{{$user->wallet}}<sup>vnđ</sup></span>
                         </div>
 
                         <!-- Nav Item - User Information -->
@@ -192,14 +193,13 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{URL::to('/change-password')}}">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Thay đổi mật khẩu
+                                <a class="dropdown-item" href="{{URL::to('/account')}}">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                   Thông tin tài khoản
                                 </a>
 
-
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Đăng xuất
                                 </a>
@@ -213,7 +213,15 @@
 
                 <!-- Begin Page Content -->
 
-
+                @if(Session::has('success'))
+                <div class="alert alert-success text-center" role="alert">
+                    {{Session::get('success')}}
+                </div>
+                @elseif(Session::has('error'))
+                    <div class="alert alert-danger text-center" role="alert">
+                        {{Session::get('error')}}
+                    </div>
+                @endif
                   @yield('container')
 
 
@@ -254,7 +262,6 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Chọn đăng xuất để thoát khỏi bảng điều khiển.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
                     <a class="btn btn-primary" href="{{URL::to('logout')}}">Đăng xuất</a>

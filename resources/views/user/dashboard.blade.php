@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('user.layout')
 @section('container')
 <div class="container-fluid">
     <style>
@@ -10,7 +10,7 @@
     </style>
     <!-- Page Heading -->
     <div class="align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-primary text-center">Trang quản trị</h1>
+        <h1 class="h3 mb-0 text-primary text-center">Trang quản lý</h1>
       
     </div>
 
@@ -18,42 +18,42 @@
         <div class="col-md-4 col-xs-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3 flex-row align-items-center justify-content-between">
-                    <h3 class="m-0 font-weight-bold text-primary text-center">Duyệt người dùng mới</h3>
+                    <h3 class="m-0 font-weight-bold text-primary text-center">Thông tin tài khoản</h3>
                 </div>
                 <div class="card-body">
                     <img width="100%" src="{{asset('/public/admin/img/account.png')}}"/>
                   
                 </div>
                 <div class="card-footer text-center">
-                    <a class="btn btn-primary" href="{{URL::to('admin/list-new-user')}}">Truy cập</a>
+                    <a class="btn btn-primary" href="{{URL::to('/account')}}">Truy cập</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4 col-xs-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3 flex-row align-items-center justify-content-between">
-                <h3 class="m-0 font-weight-bold text-primary text-center">Danh sách video</h3>
+                    <h3 class="m-0 font-weight-bold text-primary text-center">Xem video</h3>
                 </div>
                 <div class="card-body">
                     <img width="100%" src="{{asset('/public/admin/img/play.png')}}"/>
                   
                 </div>
                 <div class="card-footer text-center">
-                    <a class="btn btn-primary" href="{{URL::to('admin/list-video')}}">Truy cập</a>
+                    <a class="btn btn-primary" href="{{URL::to('/list-video')}}">Truy cập</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4 col-xs-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3 flex-row align-items-center justify-content-between">
-                    <h3 class="m-0 font-weight-bold text-primary text-center">Duyệt lệnh nạp</h3>
+                    <h3 class="m-0 font-weight-bold text-primary text-center">Rút tiền</h3>
                 </div>
                 <div class="card-body">
                     <img width="100%" src="{{asset('/public/admin/img/building.png')}}"/>
                   
                 </div>
                 <div class="card-footer text-center">
-                    <a class="btn btn-primary" href="{{URL::to('admin/deposit-manager')}}">Truy cập</a>
+                    <a class="btn btn-primary" href="{{URL::to('/withdrawn')}}">Truy cập</a>
                 </div>
             </div>
         </div>
